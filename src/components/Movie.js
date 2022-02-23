@@ -21,10 +21,10 @@ const Movie = (props) => {
             })
     }, [id]);
 
-    const handleClick = () => {
+    const handleDeleteClick = () => {
         axios.delete(`http://localhost:9000/api/movies/${id}`)
             .then(res => {
-                props.setMovies(res.data)
+                props.deleteMovies(id)
                 push('/movies');
             })
             .catch(err => {
@@ -64,7 +64,7 @@ const Movie = (props) => {
                             <span className="m-2 btn btn-dark">Favorite</span>
                             <Link to={`/movies/edit/${movie.id}`} className="m-2 btn btn-success">Edit</Link>
                             <span className="delete"><input type="button" className="m-2 btn btn-danger"
-                                value="Delete" onClick={handleClick}/></span>
+                                value="Delete" onClick={handleDeleteClick}/></span>
                         </section>
                     </div>
                 </div>
